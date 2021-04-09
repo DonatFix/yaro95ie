@@ -1,0 +1,40 @@
+(function($){
+
+
+	jQuery(document).ready(function() {
+
+        jQuery('.wpo-footer .menu a').each(function(){
+            jQuery(this).contents().wrap("<span></span>");
+            jQuery(this).find('span').attr('data-hover',jQuery(this).text());
+        });
+    
+        jQuery('.yith-wcwl-add-to-wishlist div[style="clear:both"]').remove();
+
+        jQuery('.footer-tab').click( function(){
+            var $data = jQuery(this).data('id');
+            jQuery('.footer-content').slideUp( 400, 'swing', function(){ });
+            jQuery('.footer-content').removeClass('active');
+            jQuery(this).parent().parent().find('li').removeClass('active');
+            jQuery($data).stop().slideToggle( 400, 'swing', function(){ } );
+            jQuery(this).parent().addClass('active');
+
+        });
+
+        $('.wpb_map_wraper').click(function () { 
+            $('.wpb_map_wraper iframe').css("pointer-events", "auto"); 
+        }); 
+
+        $( ".wpb_map_wraper" ).mouseleave(function() { 
+            $('.wpb_map_wraper iframe').css("pointer-events", "none"); 
+        });
+
+        // init Animate Scroll
+        if(jQuery('body').hasClass('wpo-animate-scroll')){
+            new WOW().init();
+        }
+        
+      $('[data-toggle="offcanvas"]').click(function () {
+            $('.row-offcanvas').toggleClass('active')
+      });
+    });
+})(jQuery);
